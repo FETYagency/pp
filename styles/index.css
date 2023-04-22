@@ -1,0 +1,357 @@
+@import url('https://fonts.googleapis.com/css2?family=Barlow&family=Barlow+Condensed:wght@400;700&display=swap');
+@import url(vars.css);
+@import url(reset.css);
+
+/* generals */
+main{
+    width: clamp(min(350px, 90%), 80vw, 1300px);
+    margin: auto;
+}
+@media (width<700px){
+    main{
+        max-width: 375px;
+    }
+}
+
+h1,h2,h3,h4,.cta,.nav>a{
+    font-family: var(--FF-BC);
+}
+p{
+    font-family: var(--FF-B);
+}
+
+.hero{
+    width: min(483px, 160%);
+}
+
+a,.l_btn{
+    text-decoration: none;
+    text-transform: uppercase;
+    font-weight: 700;
+    color: black;
+    display: inline-block;
+    padding-block-end: .4rem;
+    border-block-end: 1px transparent solid;
+    transition: all .3s ease;
+}
+a:hover{
+
+    border-block-end: 1px black solid;
+}
+body{
+    overflow-x: hidden;
+    padding-block: 0 6rem;
+}
+
+header{
+    padding-block: 6rem 0 ;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+
+}
+
+.patt{
+    position: absolute;
+    top: 0;
+    left: 60%;
+    width: 700px;
+    height: 500px;
+    z-index: -2;
+    border-radius: 0 0 40px 40px;
+    background-color: var(--Light-Grayish-Blue);
+}
+
+/* nav bar mobile version */
+.humberger{
+    position: relative;
+    width: 40px;
+    height: 40px;
+    display: grid;
+    place-items: center;
+}
+[type="checkbox"]{
+    position: absolute;
+    width: 40px;
+    height: 40px;
+    margin: 0;
+
+    opacity: 0;
+
+    z-index: 3;
+    cursor: pointer;
+}
+.bar{
+    width: 80%;
+    height: 3px;
+    background-color: black;
+
+    position: relative;
+
+    transition: all .3s ease;
+}
+
+
+[type="checkbox"]:checked~.bar{
+    transform: rotate(45deg);
+}
+
+.bar::after{
+    content: "";
+    width: 100%;
+    height: 100%;
+    background-color: black;
+
+    position: absolute;
+    top: -8px;
+
+    transition: all .3s ease;
+}
+.bar::before{
+    content: "";
+    width: 100%;
+    height: 100%;
+    background-color: black;
+
+    position: absolute;
+    top: 8px;
+
+    transition: all .3s ease;
+}
+
+[type="checkbox"]:checked~.bar::after,[type="checkbox"]:checked~.bar::before{
+    transform: rotate(90deg);
+    top: 0;
+}
+
+.nav{
+    position: absolute;
+    top: 140%;
+    right: 0%;
+    width: 80vw;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+    padding-inline: 1rem;
+    padding-block: 2rem;
+
+    background-color:  #fff;
+
+    gap: 1rem;
+}
+
+.dot{
+    width: 100%;
+    height: 1px;
+    background-color: var(--Very-Dark-Blue);
+    opacity: .2;
+}
+.l_btn{
+    border: none;
+    border-block-end: 1px transparent solid;
+    font-family: var(--FF-BC);
+    background-color: transparent;
+    font-weight: 700;
+    letter-spacing: 1.2px;
+    text-transform: uppercase;
+    color: var(--Grayish-Blue);
+    transition: all .3s ease;
+}
+.l_btn:hover{
+
+    border-block-end: 1px currentColor solid;
+}
+
+.nav{
+    opacity: 0;
+    pointer-events: none;
+    z-index: -999;
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.163);
+    border-radius: .4rem;
+    transition: all .3s ease;
+}
+[type="checkbox"]:checked~.nav{
+    opacity: 1;
+    z-index: 999;
+    pointer-events:all;
+}
+
+.patt{
+    position: absolute;
+    top: -400%;
+    left: -400%;
+    width: 700px;
+    height: 500px;
+    z-index: -4;
+    border-radius: 0 0 40px 40px;
+    background-color: var(--Light-Grayish-Blue);
+}
+
+
+.content{
+
+    padding-block: 9rem 0;
+
+    display: grid;
+    grid-template-columns: 1fr;
+    grid-template-rows: auto auto;
+    gap: 2rem;
+    place-items: start center;
+
+    grid-template-areas: 
+    'image'
+    'text'
+    ;
+}
+.infos{
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+    grid-area: text;
+}
+.label{
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+}
+.new{
+    background-color: black;
+    padding: .4rem .6rem;
+    border-radius: .9rem;
+
+    font-size: clamp(.4rem, 2.4vw, 1rem);
+    line-height: clamp(.6rem, 2.6vw, 1rem);
+
+    font-weight: 700;
+    color: white;
+}
+.spaced{
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: var(--Very-Dark-Blue);
+    opacity: .5;
+    font-size: clamp(.4rem, 2.4vw, 1rem);
+    line-height: clamp(.6rem, 2.6vw, 1rem);
+}
+article>h1{
+    font-size: clamp(1rem, 10vw, 4rem);
+    line-height: clamp(1rem, 10.3vw, 4rem);
+
+    text-transform: uppercase;
+    font-weight: 700;
+
+    margin-block-end: 1.3rem;
+    
+}
+article>p{
+    font-size: clamp(.7rem, 4vw, 1.5rem);
+    line-height: clamp(.7rem, 4.6vw, 2rem);
+}
+
+.btn{
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+}
+.btn>button{
+    background-color: var(--Red);
+    border: none;
+    padding: 1rem 2rem;
+    border-radius: .6rem;
+    color: white;
+    font-family: var(--FF-BC);
+    font-weight: 700;
+    font-size: 1.2rem;
+    text-transform: uppercase;
+    transition: all .3s ease;
+}
+.btn>button:hover{
+    background-color: hsl(0, 100%, 80%);
+}
+button{
+    cursor: pointer;
+}
+
+.visual{
+    grid-area: image;
+}
+@media (width>700px){
+    .humberger{
+        position: relative;
+        width: auto;
+        height: auto;
+        display: grid;
+        place-items: initial;
+    }
+    [type="checkbox"]{
+        width: 40px;
+        display: none    
+    }
+    .bar{
+        position: static;    
+        display: none;
+    }
+    .nav{
+        position: static;
+        width: auto;
+        flex-direction: row ;
+        padding-inline: 1rem;
+        padding-block: 1rem;
+        gap: 3rem;
+        opacity: 1;
+        pointer-events: all;
+        z-index: 999;
+        box-shadow: none;
+        background-color:  #ffffff00;
+    }
+    .dot{
+        width: 7px;
+        height: 7px;
+        border-radius: 50%;
+    }
+
+    .patt{
+        position: absolute;
+        top: -400%;
+        left: -70%;
+        width: 1000px;
+        height: 600px;
+        z-index: -2;
+        border-radius: 0 0 80px 80px;
+        background-color: var(--Light-Grayish-Blue);
+    }
+    .visual{
+        align-self: center;
+
+        width: 100%;
+        height: 100%;
+
+        position: relative;
+    }
+
+    .hero{
+        width: 955px;
+
+        position: absolute;
+        top: 50%;
+        transform: translateY(-50%);
+
+        right: -50%;
+    }
+    .content{
+        grid-template-columns: min(470px, 100%) 1fr;
+        grid-template-rows: auto;
+        grid-template-areas: 
+        'text image'
+        ;
+    }
+
+    
+}
+@media (width<1382px){
+    .hero{
+        width: min(955px, 150%);
+    }
+}
